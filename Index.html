@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Sweet 17th Birthday!</title>
+    <style>
+        /* CSS - TAMPILAN */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffebee, #f3e5f5, #e3f2fd);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        /* Kartu Utama */
+        .card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 90%;
+            z-index: 10;
+            animation: cardEntrance 1.2s ease-out;
+        }
+
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(50px) rotateX(-10deg); }
+            to { opacity: 1; transform: translateY(0) rotateX(0); }
+        }
+
+        /* Foto Profil */
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0 15px 30px rgba(216, 27, 96, 0.3);
+        }
+
+        h1 {
+            color: #ad1457;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .age-badge {
+            background: #ff4081;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .date-text {
+            color: #7b1fa2;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        #btnSurprise {
+            background: linear-gradient(45deg, #ff4081, #d81b60);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.3);
+        }
+
+        #btnSurprise:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(216, 27, 96, 0.5);
+        }
+
+        /* Modal Overlay */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: #fff;
+            margin: 10% auto;
+            padding: 40px;
+            border-radius: 25px;
+            max-width: 500px;
+            width: 85%;
+            text-align: center;
+            position: relative;
+            animation: zoomIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 25px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .typing-title {
+            color: #c2185b;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Partikel Animasi */
+        .particle {
+            position: fixed;
+            top: -50px;
+            pointer-events: none;
+            animation: fallAnimation linear forwards;
+            z-index: 999;
+        }
+
+        @keyframes fallAnimation {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="profile-wrapper">
+            <img src="kayla.img" class="profile-pic">
+        </div>
+        
+        <div class="age-badge">17 Years Journey</div>
+        <h1>Happy Birthday!</h1>
+        <span class="date-text">29 April 2025</span>
+        
+        <button id="btnSurprise">Klik Untuk Kejutan! ✨</button>
+    </div>
+
+    <div id="wishModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="typing-title">Happy Sweet Seventeen! 🌸</h2>
+            <p class="quote">
+                "Happy sweet seventeen, umi. Semoga kamu mendapatkan keberuntungan, kebahagiaan, kesuksesan di masa dewasamu yang segera datang. 17 tahun adalah usia yang istimewa, jadi nikmatilah dengan sebaik mungkin!!
+            </p>
+            <div style="margin-top:25px; font-size: 2rem;">🎂🎈🎁</div>
+        </div>
+    </div>
+
+    <script>
+        // JAVASCRIPT - LOGIKA INTERAKTIF
+        const btn = document.getElementById('btnSurprise');
+        const modal = document.getElementById('wishModal');
+        const closeBtn = document.querySelector('.close');
+
+        // Fungsi Kejutan
+        btn.onclick = function() {
+            modal.style.display = "block";
+            startCelebration();
+        }
+
+        // Tutup Modal
+        closeBtn.onclick = () => modal.style.display = "none";
+        window.onclick = (event) => {
+            if (event.target == modal) modal.style.display = "none";
+        }
+
+        // Efek Partikel (Hujan Hati & Bintang)
+        function startCelebration() {
+            const colors = ['#ff4081', '#ff80ab', '#7b1fa2', '#2196f3', '#ffd700'];
+            const shapes = ['❤️', '✨', '🌸', '⭐', '🎈'];
+
+            for (let i = 0; i < 60; i++) {
+                setTimeout(() => {
+                    const p = document.createElement('div');
+                    p.className = 'particle';
+                    p.innerText = shapes[Math.floor(Math.random() * shapes.length)];
+                    p.style.left = Math.random() * 100 + 'vw';
+                    p.style.color = colors[Math.floor(Math.random() * colors.length)];
+                    p.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                    p.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    p.style.opacity = Math.random();
+                    
+                    document.body.appendChild(p);
+
+                    // Hapus elemen setelah jatuh agar tidak memenuhi memori
+                    setTimeout(() => p.remove(), 5000);
+                }, i * 60);
+            }
+        }
+    </script>
+</body>
+</html>
